@@ -1,21 +1,30 @@
 const express = require('express');
 const router = express.Router();
 
-const authorController= require("../controllers/authorController")
-const bookController= require("../controllers/bookController")
+
+const cowinController = require("../controllers/cowinController");
+const memeController = require("../controllers/memeController");
+
+const weatherController = require("../controllers/weatherController");
+
+
+
 
 router.get("/test-me", function (req, res) {
     res.send("My first ever api!")
-})
+});
 
-router.post("/createAuthor", authorController.createAuthor  )
 
-router.get("/getAuthorsData", authorController.getAuthorsData)
 
-router.post("/createBook", bookController.createBook  )
 
-router.get("/getBooksData", bookController.getBooksData)
+router.get("/getStates", cowinController.getStates);
 
-router.get("/getBooksWithAuthorDetails", bookController.getBooksWithAuthorDetails)
+router.get("/getDistricts/:stateId", cowinController.getDistricts);
+
+router.get("/getDistrictSession", cowinController.getDistrictSession);
+
+router.post("/meme", memeController.memeHandler);
+
+router.get("/getWeather", weatherController.getWeather)
 
 module.exports = router;
